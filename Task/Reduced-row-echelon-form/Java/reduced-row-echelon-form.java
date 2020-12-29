@@ -176,11 +176,11 @@ class Matrix {
 	}
 
 	public Coordinate findPivot(Coordinate a) {
-		int first_row = a.row;
+		
 		Coordinate pivot = new Coordinate(a.row, a.col);
 		Coordinate current = new Coordinate(a.row, a.col);	
 
-		for (int i = a.row; i < (numRows - first_row); i++) {
+		for (int i = a.row; i < (numRows); i++) {
 			current.row = i;
 			if (getCoordinate(current).doubleValue() == 1.0) {
 				Interchange(current, a);
@@ -188,7 +188,7 @@ class Matrix {
 		}
 
 		current.row = a.row;
-		for (int i = current.row; i < (numRows - first_row); i++) {
+		for (int i = current.row; i < (numRows); i++) {
 			current.row = i;
 			if (getCoordinate(current).doubleValue() != 0) {
 				pivot.row = i;
@@ -256,5 +256,18 @@ class Matrix {
 		System.out.println("before\n" + a.toString() + "\n");
 		a.RREF();
 		System.out.println("after\n" + a.toString() + "\n");
+		
+		double[][] matrix_5 = {
+                {1,0,-1,0},
+                {0,1,0,-1},
+                {1,-2,-1,0},
+                {-1,0,3,1}
+       		};
+
+
+		Matrix b = new Matrix(matrix_5);
+		System.out.println("before\n" + b.toString() + "\n");
+		b.RREF();
+		System.out.println("after\n" + b.toString() + "\n");
 	}	
 }
